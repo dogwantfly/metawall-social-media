@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+@tailwind base;
+
+@layer base {
+  html {
+    @apply text-neutral-800;
+  }
+  html.dark {
+    @apply text-neutral-50;
+    @apply bg-neutral-800;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+:disabled {
+  cursor: not-allowed;
+}
+.font-family-paytone-one {
+  font-family: "Paytone One", sans-serif;
+}
+.font-azeret-mono {
+  font-family: "Azeret Mono", monospace;
+}
+body {
+  background-color: #EFECE7;
+  background-image: linear-gradient(90deg, rgba(112, 112, 112, 0.3) 1%, transparent 0), linear-gradient(rgba(112, 112, 112, 0.3) 1%, transparent 0);
+  background-size: 80px 80px;
+}
+
