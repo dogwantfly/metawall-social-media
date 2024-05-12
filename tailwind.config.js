@@ -6,8 +6,22 @@ export default {
     './node_modules/tw-elements-react/dist/js/**/*.js',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'black-custom': '#000400',
+        'blue-custom': {
+          DEFAULT: '#03438D',
+          light: '#E2EDFA',
+        },
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '12px',
+        },
+      },
+    },
   },
   darkMode: 'class',
-  plugins: [import("tw-elements/plugin.cjs")],
+  plugins: [import('tw-elements/plugin.cjs')],
 };

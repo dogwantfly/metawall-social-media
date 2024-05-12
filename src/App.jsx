@@ -5,6 +5,7 @@ import 'tw-elements-react/dist/css/tw-elements-react.min.css';
 import 'animate.css';
 import './App.css';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import FrontLayout from './pages/FrontLayout';
 import PostsFeed from './pages/PostsFeed';
 import CreatePost from './pages/CreatePost';
 
@@ -32,8 +33,10 @@ function App() {
       />
       <HashRouter>
         <Routes>
-          <Route path='/' element={<PostsFeed />} />
-          <Route path='/createPost' element={<CreatePost />} />
+          <Route path='/' element={<FrontLayout />}>
+            <Route index element={<PostsFeed />} />
+            <Route path='createPost' element={<CreatePost />} />
+          </Route>
         </Routes>
       </HashRouter>
     </>
