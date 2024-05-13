@@ -9,6 +9,6 @@ export default defineConfig(({ command, mode }) => {
     define: {
       __APP_ENV__: JSON.stringify(env.VITE_API_BASE_URL),
     },
-    base:　process.env.NODE_ENV === 'production' ? '/metawall-social-media/' : '/';
+    base:　process.env.NODE_ENV === 'production' ? '/metawall-social-media/' : '/',
   };
 });
