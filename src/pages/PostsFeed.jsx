@@ -6,33 +6,59 @@ import { Collapse, Dropdown, Ripple, initTWE } from 'tw-elements';
 function PostsFeed() {
   const [posts, setPosts] = useState([]);
   // const [loading, setLoading] = useState(true);
-  const handleGetPosts = async () => {
+
+  const [order, setOrder] = useState('desc');
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearchChange = (e) => {
+    const { value } = e.target;
+    setSearchValue(value)
+  }
+
+  
+
+  const handleSortChange = (event) => {
+    const { value } = event.target;
+    setOrder(value);
+  };
+
+  const handleGetPosts = async (order, searchValue) => {
     try {
-      const res = await getPosts();
-      console.log(res.data);
+      const res = await getPosts(order, searchValue);
+
       setPosts(res.data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handleSearch = () => {
+    handleGetPosts(order, searchValue)
+  }
+
   const breakLine = (content) => {
     return { __html: content.replace(/\n/g, '<br>') };
   };
   useEffect(() => {
-    handleGetPosts();
+    handleGetPosts(order, searchValue);
+    
+  }, [order]);
+
+  useEffect(() => {
     initTWE({ Collapse, Dropdown, Ripple });
-  }, []);
+  },[])
   return (
     <>
       <div className='flex gap-3 mb-4 flex-wrap md:flex-nowrap'>
         <div className='w-full md:w-4/12'>
           <select
             className='block w-full h-full border-2 border-black p-2 text-black-custom dark:border-neutral-200 dark:text-white/60'
-            defaultValue='1'
+            name="order"
+            value={order}
+            onChange={handleSortChange}
           >
-            <option value='1'>最新貼文</option>
-            <option>選擇一個</option>
-            <option>选择一個</option>
+            <option value='desc'>最新貼文</option>
+            <option value='asc'>最舊貼文</option>
           </select>
         </div>
         <div className='w-full md:w-8/12'>
@@ -43,10 +69,13 @@ function PostsFeed() {
               placeholder='搜尋貼文'
               aria-label='搜尋貼文'
               aria-describedby='basic-addon1'
+              value={searchValue}
+              onChange={handleSearchChange}
             />
             <button
               type='button'
               className='relative m-0 flex-none border-s-0 border-2 border-black-custom bg-blue-custom bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none hover:bg-blue-custom/80'
+              onClick={handleSearch}
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
