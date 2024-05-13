@@ -25,10 +25,10 @@ function CreatePost() {
       return;
     }
     setImgUrl('');
-    setLoading({
-      ...loading,
-      img: true,
-    });
+    setLoading(prevState => ({
+      ...prevState,
+      img: true
+    }));
     try {
       const formData = new FormData();
       formData.append('file-to-upload', file);
@@ -40,10 +40,10 @@ function CreatePost() {
       toast.error(error.message);
       console.log(error);
     } finally {
-      setLoading({
-        ...loading,
-        img: false,
-      });
+      setLoading(prevState => ({
+        ...prevState,
+        img: false
+      }));
     }
   };
 
@@ -51,10 +51,10 @@ function CreatePost() {
   const sendPost = async () => {
     if (!passValidation()) return; // 確保所有驗證在進入異步操作前完成
 
-    setLoading({
-      ...loading,
-      post: true,
-    });
+    setLoading(prevState => ({
+      ...prevState,
+          post: true,
+    }));
     try {
       const data = {
         user: '6635bca51e5c511412a293bc',
@@ -75,10 +75,10 @@ function CreatePost() {
       toast.error('發送貼文失敗！');
       console.log(error);
     } finally {
-      setLoading({
-        ...loading,
-        post: false,
-      });
+      setLoading(prevState => ({
+        ...prevState,
+            post: false,
+      }));
     }
   };
 
