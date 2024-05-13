@@ -91,7 +91,7 @@ function CreatePost() {
       .replace(/'/g, '&#039;');
   };
   const validateUrl = (url) => {
-    const regex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+    const regex = /^https:\/\//;
     return regex.test(url);
   };
 
@@ -135,7 +135,7 @@ function CreatePost() {
           </label>
           <div className='relative mb-4'>
             <textarea
-              className='peer block min-h-[auto] w-full border-2 border-black-custom bg-white px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-black-custom data-[twe-input-state-active]:placeholder:opacity-100 h-[170px] resize-none'
+              className='peer block min-h-[auto] w-full border-2 border-black-custom bg-white px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-black-custom :placeholder:opacity-100 h-[170px] resize-none'
               id='postContent'
               value={postContent}
               onChange={(e) => setPostContent(escapeHtml(e.target.value))}
@@ -172,7 +172,7 @@ function CreatePost() {
           <div className='flex justify-center mb-8'>
             <button
               type='button'
-              className={`block w-full md:w-auto md:inline-block rounded bg-black-custom md:px-[130px] py-4 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out  hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] hover:bg-black-custom/80 focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 disabled:opacity-50 ${
+              className={`block w-full md:w-auto md:inline-block rounded bg-black-custom md:px-[130px] py-4 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out  hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] hover:bg-black-custom/80 focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 ${
                 !passValidation() ? 'disabled:opacity-50' : ''
               }`}
               onClick={sendPost}
