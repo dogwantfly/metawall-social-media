@@ -1,11 +1,11 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { createPost } from '../api/post';
 import { uploadImage as uploadImageApi } from '../api/uploadImage';
 import 'tw-elements-react/dist/css/tw-elements-react.min.css';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { Input, initTWE } from 'tw-elements';
+// import { Input, initTWE } from 'tw-elements';
 
 function CreatePost() {
   const fileInputRef = useRef(null);
@@ -105,9 +105,6 @@ function CreatePost() {
     return true;
   };
 
-  useEffect(() => {
-    initTWE({ Input });
-  }, []);
 
   return (
     <>
