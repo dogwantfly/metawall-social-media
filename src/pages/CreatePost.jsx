@@ -37,6 +37,7 @@ function CreatePost() {
       setImgUrl(res.data.url);
       fileInputRef.current.value = '';
     } catch (error) {
+      toast.error(error.message);
       console.log(error);
     } finally {
       setLoading({
@@ -162,7 +163,7 @@ function CreatePost() {
             {imgUrl && (
               <img
                 src={imgUrl}
-                className='w-full border-2 border-black-custom rounded-lg'
+                className='w-full border-2 border-black-custom rounded-lg object-cover h-[500px]'
               />
             )}
             {loading.img && (
