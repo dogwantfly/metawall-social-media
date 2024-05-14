@@ -37,7 +37,8 @@ function CreatePost() {
       setImgUrl(res.data.url);
       fileInputRef.current.value = '';
     } catch (error) {
-      toast.error(error.message);
+      const { data } = error.response;
+      toast.error( data.message || error.message);
       console.log(error);
     } finally {
       setLoading(prevState => ({
