@@ -1,12 +1,20 @@
 import { useEffect } from 'react';
 import 'tw-elements-react/dist/css/tw-elements-react.min.css';
 import { Collapse, Dropdown, initTWE } from 'tw-elements';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, Navigate } from 'react-router-dom';
+import { useAuth } from '../context/useAuth';
 
 function FrontLayout() {
+  const { isAuthenticated } = useAuth();
+
   useEffect(() => {
     initTWE({ Collapse, Dropdown });
   }, []);
+
+  if (!isAuthenticated) {
+    return <Navigate to='/auth/login' />;
+  }
+
   return (
     <>
       <nav className='flex-no-wrap relative flex w-full items-center justify-between bg-white py-2 shadow-dark-mild dark:bg-neutral-700 lg:flex-wrap lg:justify-start lg:py-4 border-b-[3px] border border-[#000400]'>
