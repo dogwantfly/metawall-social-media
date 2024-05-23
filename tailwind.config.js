@@ -13,6 +13,11 @@ export default {
           DEFAULT: '#03438D',
           light: '#E2EDFA',
         },
+        'red-custom': '#F57375',
+        'gray-custom': {
+          DEFAULT: '#A8B0B9',
+          dark: '#808080',
+        },
       },
       container: {
         center: true,
