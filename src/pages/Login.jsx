@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { loginSchema as schema } from '../type/schema';
 
 function Login() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     mode: 'all',
+    resolver: zodResolver(schema),
   });
 
   const onSubmit = (data) => {
@@ -26,9 +28,7 @@ function Login() {
             className='peer block min-h-[auto] w-full border-2 border-black-custom bg-white px-6 py-4 leading-[1.6] outline-none transition-all duration-200 ease-linear font-azeret-mono focus:placeholder:opacity-100 peer-focus:text-black-custom data-[twe-input-state-active]:placeholder:opacity-100 placeholder:font-azeret-mono'
             id='email'
             placeholder='Email'
-            {...register('email', {
-              required: { value: true, message: 'Email 為必填' },
-            })}
+            {...register('email')}
           />
         </div>
 
@@ -41,7 +41,8 @@ function Login() {
             {...register('password')}
           />
         </div>
-        <p className='text-red-custom'>{errors.email?.message}</p>
+        <p className='text-red-custom mb-2 text-center'>{errors.email?.message}</p>
+        <p className='text-red-custom mb-2 text-center'>{errors.password?.message}</p>
         <div
           className={
             errors.email || errors.password ? 'cursor-not-allowed' : ''

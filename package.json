@@ -11,6 +11,7 @@
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
     "animate.css": "^4.1.1",
     "axios": "^1.6.8",
     "gh-pages": "^6.1.1",
@@ -21,7 +22,8 @@
     "react-router-dom": "^6.23.0",
     "react-toastify": "^10.0.5",
     "tw-elements": "^2.0.0",
-    "tw-elements-react": "^1.0.0-alpha2"
+    "tw-elements-react": "^1.0.0-alpha2",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
