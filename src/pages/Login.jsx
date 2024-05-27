@@ -7,7 +7,7 @@ function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: 'all',
     resolver: zodResolver(schema),
@@ -30,6 +30,7 @@ function Login() {
             placeholder='Email'
             {...register('email')}
           />
+          <p className='text-red-custom mb-2'>{errors.email?.message}</p>
         </div>
 
         <div className='relative mb-8'>
@@ -40,17 +41,17 @@ function Login() {
             placeholder='Password'
             {...register('password')}
           />
+          <p className='text-red-custom mb-2'>{errors.password?.message}</p>
         </div>
-        <p className='text-red-custom mb-2 text-center'>{errors.email?.message}</p>
-        <p className='text-red-custom mb-2 text-center'>{errors.password?.message}</p>
         <div
           className={
-            errors.email || errors.password ? 'cursor-not-allowed' : ''
+            !isValid ? 'cursor-not-allowed' : ''
           }
         >
           <button
             type='button'
-            className='w-full rounded bg-blue-custom border-2 border-black-custom button-shadow py-4 font-azeret-mono font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-blue-custom/80  focus:outline-none focus:ring-0 active:bg-blue-custom/80 active:shadow-blue-custom-2 mb-4 disabled:bg-gary-custom disabled:border-gary-custom-dark'
+            className={`w-full rounded border-2 button-shadow py-4 font-azeret-mono font-medium uppercase leading-normal text-white transition duration-150 ease-in-out mb-4 ${!isValid ? 'bg-gray-custom border-gray-custom-dark' : 'bg-blue-custom border-black-custom hover:bg-blue-custom/80 focus:outline-none focus:ring-0 active:bg-blue-custom/80 active:shadow-blue-custom-2'}`}
+            disabled={!isValid}
           >
             登入
           </button>
