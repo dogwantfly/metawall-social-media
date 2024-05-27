@@ -16,6 +16,7 @@ function Login() {
   const onSubmit = (data) => {
     console.log(data);
   };
+  const { login } = useAuth();
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
