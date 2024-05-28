@@ -42,7 +42,7 @@ function PostsFeed() {
   useEffect(() => {
     handleGetPosts(order, searchValue);
     
-  }, [order]);
+  }, [order, searchValue]);
 
   useEffect(() => {
     initTWE({ Collapse, Dropdown, Ripple });

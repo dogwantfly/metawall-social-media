@@ -43,9 +43,9 @@ function App() {
               <Route path='createPost' element={<CreatePost />} />
             </Route>
             <Route path='/auth' element={<AuthLayout />}>
-              <Route path='login' element={<Login />} />
-              <Route path='signUp' element={<SignUp />} />
-            </Route>
+            <Route path='login' element={<Login />} />
+            <Route path='signUp' element={<SignUp />} />
+          </Route>
           </Routes>
         </AuthProvider>
       </HashRouter>

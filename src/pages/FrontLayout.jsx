@@ -1,15 +1,27 @@
 import { useEffect } from 'react';
 import 'tw-elements-react/dist/css/tw-elements-react.min.css';
 import { Collapse, Dropdown, initTWE } from 'tw-elements';
-import { Link, Outlet, Navigate } from 'react-router-dom';
+import { Link, Outlet, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/useAuth';
+import { getAuthToken } from '../context/AuthUtils';
 
 function FrontLayout() {
   const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     initTWE({ Collapse, Dropdown });
   }, []);
+
+
+  useEffect(() => { 
+    const authToken = getAuthToken();
+    if (authToken) {
+      navigate('/');
+    } else {
+      navigate('/auth/login');
+    }
+  }, [navigate]);
 
   if (!isAuthenticated) {
     return <Navigate to='/auth/login' />;
