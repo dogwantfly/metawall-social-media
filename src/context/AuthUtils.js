@@ -9,5 +9,15 @@ export const getAuthToken = () => {
     console.log(authToken);
     return authToken;
 }
+export const getUserName = () => {
+    const userName = getCookie('userName');
+    console.log(userName);
+    return userName;
+}
+export const getUserEmail = () => {
+    const userEmail = getCookie('userEmail');
+    console.log(userEmail);
+    return userEmail;
+}
 export const setAuthToken = (token) => localStorage.setItem('authToken', token);
 export const removeAuthToken = () => localStorage.removeItem('authToken');

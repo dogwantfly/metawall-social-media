@@ -16,9 +16,7 @@ function FrontLayout() {
 
   useEffect(() => { 
     const authToken = getAuthToken();
-    if (authToken) {
-      navigate('/');
-    } else {
+    if (!authToken) {
       navigate('/auth/login');
     }
   }, [navigate]);

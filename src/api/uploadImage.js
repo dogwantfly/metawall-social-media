@@ -1,4 +1,4 @@
-import axiosInstance from './base';
+import {axiosInstance} from './base';
 
 export const uploadImage = async (formData) => {
   const res = await axiosInstance.post('/api/v1/uploadImage', formData, {

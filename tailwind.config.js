@@ -17,7 +17,10 @@ export default {
         'gray-custom': {
           DEFAULT: '#A8B0B9',
           dark: '#808080',
+          light: '#EFECE7',
+          100: '#9B9893',
         },
+        'yellow-custom': '#EEC32A',
       },
       container: {
         center: true,
