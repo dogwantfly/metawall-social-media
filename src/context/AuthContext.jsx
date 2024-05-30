@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getAuthToken, setAuthToken, removeAuthToken } from './AuthUtils';
 import { AuthContext } from './useAuth';
-import { login as loginApi, signUp as signUpApi, getUserInfo } from '../api/user';
+import {
+  login as loginApi,
+  signUp as signUpApi,
+  getUserInfo,
+} from '../api/user';
 import { toast } from 'react-toastify';
-
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!getAuthToken());
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = async (email, password) => {
     try {
@@ -19,14 +23,25 @@ export const AuthProvider = ({ children }) => {
         password,
       };
       const response = await loginApi(data);
-      console.log('login',response);
+      console.log('login', response);
       if (response.status) {
-
         setAuthToken(response.data.token);
-        document.cookie = `authToken=${response.data.token}; path=/; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toUTCString()}`;
-        document.cookie = `userName=${response.data.name}; path=/; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toUTCString()}`;
+        document.cookie = `authToken=${
+          response.data.token
+        }; path=/; expires=${new Date(
+          Date.now() + 1000 * 60 * 60 * 24 * 30
+        ).toUTCString()}`;
+        document.cookie = `userName=${
+          response.data.name
+        }; path=/; expires=${new Date(
+          Date.now() + 1000 * 60 * 60 * 24 * 30
+        ).toUTCString()}`;
         navigate('/');
-        document.cookie = `userEmail=${response.data.email}; path=/; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toUTCString()}`;
+        document.cookie = `userEmail=${
+          response.data.email
+        }; path=/; expires=${new Date(
+          Date.now() + 1000 * 60 * 60 * 24 * 30
+        ).toUTCString()}`;
         navigate('/');
         setIsAuthenticated(true);
         navigate('/');
@@ -48,14 +63,26 @@ export const AuthProvider = ({ children }) => {
         confirmPassword,
       };
       const response = await signUpApi(data);
-      console.log('signUp',response);
+      console.log('signUp', response);
       if (response.status) {
         setAuthToken(response.data.token);
-        document.cookie = `authToken=${response.data.token}; path=/; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toUTCString()}`;
+        document.cookie = `authToken=${
+          response.data.token
+        }; path=/; expires=${new Date(
+          Date.now() + 1000 * 60 * 60 * 24 * 30
+        ).toUTCString()}`;
         setIsAuthenticated(true);
-        document.cookie = `userName=${response.data.name}; path=/; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toUTCString()}`;
+        document.cookie = `userName=${
+          response.data.name
+        }; path=/; expires=${new Date(
+          Date.now() + 1000 * 60 * 60 * 24 * 30
+        ).toUTCString()}`;
         navigate('/');
-        document.cookie = `userEmail=${response.data.email}; path=/; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toUTCString()}`;
+        document.cookie = `userEmail=${
+          response.data.email
+        }; path=/; expires=${new Date(
+          Date.now() + 1000 * 60 * 60 * 24 * 30
+        ).toUTCString()}`;
         navigate('/');
       } else {
         toast.error('註冊失敗');
@@ -73,25 +100,22 @@ export const AuthProvider = ({ children }) => {
 
   const handleUserInfo = async () => {
     const res = await getUserInfo();
-    console.log('handleUserInfo',res);
+    console.log('handleUserInfo', res);
     if (res.status) {
       setUser(res.data);
     }
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     if (getAuthToken()) {
       handleUserInfo();
     }
-  }, []);
-
-
-  useEffect(() => { 
-    handleUserInfo();
-  }, []);
+  }, [location.pathname]);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, handleLogin, logout, user, handleSignUp }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, handleLogin, logout, user, handleSignUp }}
+    >
       {children}
     </AuthContext.Provider>
   );

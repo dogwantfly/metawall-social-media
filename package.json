@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.4.2",
     "animate.css": "^4.1.1",
     "axios": "^1.6.8",
+    "dayjs": "^1.11.11",
     "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

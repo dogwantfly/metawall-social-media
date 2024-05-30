@@ -10,6 +10,7 @@ import PostsFeed from './pages/PostsFeed';
 import CreatePost from './pages/CreatePost';
 import AuthLayout from './pages/AuthLayout';
 import Following from './pages/Following';
+import ProfileUpdate from './pages/ProfileUpdate';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { AuthProvider } from './context/AuthContext';
@@ -43,11 +44,12 @@ function App() {
               <Route index element={<PostsFeed />} />
               <Route path='createPost' element={<CreatePost />} />
               <Route path='following' element={<Following />} />
+              <Route path='profileUpdate' element={<ProfileUpdate />} />
             </Route>
             <Route path='/auth' element={<AuthLayout />}>
-            <Route path='login' element={<Login />} />
-            <Route path='signUp' element={<SignUp />} />
-          </Route>
+              <Route path='login' element={<Login />} />
+              <Route path='signUp' element={<SignUp />} />
+            </Route>
           </Routes>
         </AuthProvider>
       </HashRouter>

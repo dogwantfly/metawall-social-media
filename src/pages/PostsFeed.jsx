@@ -13,10 +13,8 @@ function PostsFeed() {
 
   const handleSearchChange = (e) => {
     const { value } = e.target;
-    setSearchValue(value)
-  }
-
-  
+    setSearchValue(value);
+  };
 
   const handleSortChange = (event) => {
     const { value } = event.target;
@@ -34,25 +32,23 @@ function PostsFeed() {
   };
 
   const handleSearch = () => {
-    handleGetPosts(order, searchValue)
-  }
-
+    handleGetPosts(order, searchValue);
+  };
 
   useEffect(() => {
     handleGetPosts(order, searchValue);
-    
   }, [order, searchValue]);
 
   useEffect(() => {
     initTWE({ Collapse, Dropdown, Ripple });
-  },[])
+  }, []);
   return (
     <>
       <div className='flex gap-3 mb-4 flex-wrap md:flex-nowrap'>
         <div className='w-full md:w-4/12'>
           <select
             className='block w-full h-full border-2 border-black p-2 text-black-custom dark:border-neutral-200 dark:text-white/60'
-            name="order"
+            name='order'
             value={order}
             onChange={handleSortChange}
           >
@@ -97,9 +93,8 @@ function PostsFeed() {
 
       {posts.length > 0 ? (
         <div className='grid gap-4'>
-          {posts.map((post) => (
-            <Post post={post} key={post._id} />
-          ))}
+          {posts.length > 0 &&
+            posts.map((post) => <Post post={post} key={post._id} />)}
         </div>
       ) : (
         <div className='border-2 border-black-custom text-center text-neutral-500 bg-white rounded-lg card-shadow'>
