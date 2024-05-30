@@ -9,6 +9,7 @@ import FrontLayout from './pages/FrontLayout';
 import PostsFeed from './pages/PostsFeed';
 import CreatePost from './pages/CreatePost';
 import AuthLayout from './pages/AuthLayout';
+import Following from './pages/Following';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { AuthProvider } from './context/AuthContext';
@@ -41,6 +42,7 @@ function App() {
             <Route path='/' element={<FrontLayout />}>
               <Route index element={<PostsFeed />} />
               <Route path='createPost' element={<CreatePost />} />
+              <Route path='following' element={<Following />} />
             </Route>
             <Route path='/auth' element={<AuthLayout />}>
             <Route path='login' element={<Login />} />

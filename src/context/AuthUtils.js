@@ -20,4 +20,6 @@ export const getUserEmail = () => {
     return userEmail;
 }
 export const setAuthToken = (token) => localStorage.setItem('authToken', token);
-export const removeAuthToken = () => localStorage.removeItem('authToken');
+export const removeAuthToken = () => {
+    document.cookie = `authToken=; path=/; expires=${new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toUTCString()}`;
+};

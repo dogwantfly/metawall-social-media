@@ -14,3 +14,8 @@ export const getUserInfo = async () => {
   const res = await authAxiosInstance.get('users/profile');
   return res.data;
 };
+
+export const getUserFollowing = async () => {
+  const res = await authAxiosInstance.get('users/following');
+  return res.data;
+};
