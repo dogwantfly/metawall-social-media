@@ -183,7 +183,7 @@ function FrontLayout() {
                 </li>
                 <li>
                   <Link
-                    to='/'
+                    to='/likePostsList'
                     className='flex items-center gap-4 font-bold hover:text-blue-custom hover:ease-in-out focus:text-blue-custom active:text-blue-custom group'
                   >
                     <div

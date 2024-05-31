@@ -169,14 +169,15 @@ function Post({ post }) {
             />
           </Link>
           <div className='relative mb-4 flex w-full items-stretch'>
-            <input
+            <textarea
               type='text'
-              className='peer block w-full border-2 border-e-0 border-black-custom bg-white px-4 py-2 leading-[1.6] outline-none transition-all duration-200 ease-linear font-azeret-mono focus:placeholder:opacity-100 peer-focus:text-black-custom data-[twe-input-state-active]:placeholder:opacity-100 placeholder:font-azeret-mono'
+              className='peer block w-full border-2 border-e-0 border-black-custom bg-white px-4 py-2 leading-[1.6] outline-none transition-all duration-200 ease-linear font-azeret-mono focus:placeholder:opacity-100 peer-focus:text-black-custom data-[twe-input-state-active]:placeholder:opacity-100 placeholder:font-azeret-mono resize-none'
+              rows={1}
               id='comment'
               placeholder='留言...'
               value={inputComment}
               onChange={(e) => setInputComment(e.target.value)}
-            />
+            ></textarea>
             <button
               type='button'
               className={`border-2 border-black-custom text-nowrap md:inline-block md:px-12 py-2 font-medium uppercase leading-normal  shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)]  ${
