@@ -12,6 +12,8 @@ import AuthLayout from './pages/AuthLayout';
 import Following from './pages/Following';
 import ProfileUpdate from './pages/ProfileUpdate';
 import LikePostsList from './pages/LikePostsList';
+import Post from './pages/Post';
+import PersonalPage from './pages/PersonalPage';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { AuthProvider } from './context/AuthContext';
@@ -47,6 +49,8 @@ function App() {
               <Route path='following' element={<Following />} />
               <Route path='profileUpdate' element={<ProfileUpdate />} />
               <Route path='likePostsList' element={<LikePostsList />} />
+              <Route path='post/:postId' element={<Post />} />
+              <Route path='personalPage/:userId' element={<PersonalPage />} />
             </Route>
             <Route path='/auth' element={<AuthLayout />}>
               <Route path='login' element={<Login />} />

@@ -1,7 +1,9 @@
 import { authAxiosInstance } from './base';
 
 export const getPosts = async (order, content) => {
-  const res = await authAxiosInstance.get(`/posts?order=${order}&content=${content || ''}`);
+  const res = await authAxiosInstance.get(
+    `/posts?order=${order}&content=${content || ''}`
+  );
   return res.data;
 };
 
@@ -27,5 +29,12 @@ export const unLikePost = async (postId) => {
 
 export const addComment = async (postId, comment) => {
   const res = await authAxiosInstance.post(`/posts/${postId}/comment`, comment);
+  return res.data;
+};
+
+export const getPostsByUserId = async (userId, order, content) => {
+  const res = await authAxiosInstance.get(
+    `/posts/user/${userId}?order=${order}&content=${content || ''}`
+  );
   return res.data;
 };

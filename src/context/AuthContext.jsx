@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }) => {
 
   const handleUserInfo = async () => {
     const res = await getUserInfo();
-    console.log('handleUserInfo', res);
+
     if (res.status) {
       setUser(res.data);
     }
@@ -114,7 +114,14 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, handleLogin, logout, user, handleSignUp, handleUserInfo }}
+      value={{
+        isAuthenticated,
+        handleLogin,
+        logout,
+        user,
+        handleSignUp,
+        handleUserInfo,
+      }}
     >
       {children}
     </AuthContext.Provider>

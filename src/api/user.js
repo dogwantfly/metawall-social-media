@@ -1,4 +1,4 @@
-import { axiosInstance }from './base';
+import { axiosInstance } from './base';
 import { authAxiosInstance } from './base';
 
 export const login = async (data) => {
@@ -8,7 +8,7 @@ export const login = async (data) => {
 export const signUp = async (data) => {
   const res = await axiosInstance.post('users/sign_up', data);
   return res.data;
-}; 
+};
 
 export const getUserInfo = async () => {
   const res = await authAxiosInstance.get('users/profile');
@@ -32,5 +32,15 @@ export const updatePassword = async (data) => {
 
 export const getLikeList = async () => {
   const res = await authAxiosInstance.get('users/getLikeList');
+  return res.data;
+};
+
+export const followUser = async (userId) => {
+  const res = await authAxiosInstance.post(`users/${userId}/follow`);
+  return res.data;
+};
+
+export const unfollowUser = async (userId) => {
+  const res = await authAxiosInstance.delete(`users/${userId}/unfollow`);
   return res.data;
 };

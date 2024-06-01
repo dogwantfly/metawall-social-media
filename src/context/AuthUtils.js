@@ -8,17 +8,17 @@ function getCookie(name) {
 }
 export const getAuthToken = () => {
   const authToken = getCookie('authToken');
-  console.log(authToken);
+
   return authToken;
 };
 export const getUserName = () => {
   const userName = getCookie('userName');
-  console.log(userName);
+
   return userName;
 };
 export const getUserEmail = () => {
   const userEmail = getCookie('userEmail');
-  console.log(userEmail);
+
   return userEmail;
 };
 export const setAuthToken = (token) => {

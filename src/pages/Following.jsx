@@ -30,9 +30,14 @@ function Following() {
               key={item._id}
               className='p-4 border-2 border-black-custom text-black-custom bg-white rounded-lg card-shadow mb-4'
             >
-              <div className='flex items-end justify-between gap-4'>
+              <div className='flex items-end justify-between gap-4 flex-wrap'>
                 <div className='flex items-center gap-x-4'>
-                  <Link>
+                  <Link
+                    to={{
+                      pathname: `/personalPage/${item.user._id}`,
+                      state: { userInfo: item.user },
+                    }}
+                  >
                     <img
                       src={item.user?.avatar}
                       alt={item.user?.name}
@@ -41,7 +46,13 @@ function Following() {
                   </Link>
 
                   <div>
-                    <Link className='hover:text-blue-custom'>
+                    <Link
+                      className='hover:text-blue-custom'
+                      to={{
+                        pathname: `/personalPage/${item.user._id}`,
+                        state: { userInfo: item.user },
+                      }}
+                    >
                       <h3 className='font-bold'>{item.user.name}</h3>
                     </Link>
                     <div className='text-gray-custom-100 text-sm'>
