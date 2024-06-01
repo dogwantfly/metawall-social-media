@@ -8,7 +8,7 @@ function Following() {
   const handleUserFollowing = async () => {
     try {
       const res = await getUserFollowing();
-      console.log('following list', res);
+
       setFollowList(res.data?.following);
     } catch (error) {
       console.log(error);

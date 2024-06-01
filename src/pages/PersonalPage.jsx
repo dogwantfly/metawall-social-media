@@ -19,7 +19,6 @@ function PersonalPage() {
       const res = await getPostsByUserId(userInfoId, order, searchValue);
       setUserInfo(res.data?.user);
       setPosts(res.data?.posts);
-      console.log('handleGetPostsByUserId', res);
     } catch (error) {
       console.log(error);
     }

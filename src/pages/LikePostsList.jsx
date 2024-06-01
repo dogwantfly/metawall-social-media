@@ -13,7 +13,7 @@ function LikePostsList() {
   const handleGetLikeList = async () => {
     try {
       const res = await getLikeList();
-      console.log('like list', res);
+
       setLikePosts(res.data?.likes);
     } catch (error) {
       console.log(error);
@@ -26,10 +26,9 @@ function LikePostsList() {
         ...prevState,
         like: true,
       }));
-      const res = await unLikePost(postId);
+      await unLikePost(postId);
       handleGetLikeList();
       toast.success('取消按讚成功');
-      console.log('handleLike', res);
     } catch (error) {
       toast.error('取消按讚失敗');
       console.log(error);

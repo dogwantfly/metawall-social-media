@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
         password,
       };
       const response = await loginApi(data);
-      console.log('login', response);
       if (response.status) {
         setAuthToken(response.data.token);
         document.cookie = `authToken=${
@@ -63,7 +62,7 @@ export const AuthProvider = ({ children }) => {
         confirmPassword,
       };
       const response = await signUpApi(data);
-      console.log('signUp', response);
+
       if (response.status) {
         setAuthToken(response.data.token);
         document.cookie = `authToken=${
